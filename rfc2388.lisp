@@ -434,9 +434,8 @@ is a list of (NAME . VALUE)"))
                                                  #+(or :sbcl :lispworks :allegro :openmcl :clisp
                                                        :dotcl)
                                                  :external-format
-                                                 ;; dotcl needs no eol-style: latin-1 output is
-                                                 ;; byte for byte, newlines included
-                                                 #+(or :sbcl :dotcl) :latin-1
+                                                 #+sbcl :latin-1
+                                                 #+dotcl '(:latin-1 :newline :lf)
                                                  #+:lispworks '(:latin-1 :eol-style :lf)
                                                  #+:allegro (excl:crlf-base-ef :latin1)
                                                  #+:openmcl '(:character-encoding :iso-8859-1
